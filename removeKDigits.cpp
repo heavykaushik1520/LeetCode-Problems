@@ -1,7 +1,7 @@
 /*
 Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.
 
- 
+
 
 Example 1:
 
@@ -20,26 +20,30 @@ Output: "0"
 Explanation: Remove all the digits from the number and it is left with nothing which is 0.
 */
 
-
-class Solution {
+class Solution
+{
 public:
-    string removeKdigits(string num, int k) {
+    string removeKdigits(string num, int k)
+    {
         int i, n = num.size();
         stack<char> s;
         string res;
 
-        for (i=0; i<n; ++i) {
-            while (!s.empty() && s.top() > num[i] && k > 0) {
+        for (i = 0; i < n; ++i)
+        {
+            while (!s.empty() && s.top() > num[i] && k > 0)
+            {
                 s.pop();
                 k--;
             }
             s.push(num[i]);
         }
 
-        for (i=0; i<k; ++i)
+        for (i = 0; i < k; ++i)
             s.pop();
-        
-        while (!s.empty()) {
+
+        while (!s.empty())
+        {
             res.push_back(s.top());
             s.pop();
         }
